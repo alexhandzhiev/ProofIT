@@ -94,3 +94,20 @@ Test results:
 ```
 <PROJECT_FOLDER>/build/reports/tests/test/index.html
 ```
+
+## Implementation details
+SpringBoot initializer was used for the initial skeleton.
+Chosen build tool is Gradle. GradleWrapper is applied for convenience.
+Since the task requires the calculation to be accessed by an API - 
+RestController is used calling a standard Spring Service (Bean)
+which contains the business logic i.e. calculate method.
+The constants are configured in Spring's application.properties
+so that they could be configured more easily. The logic calculating
+the premiums for FIRE/THEFT is using a switch expression so that
+it could be extended when a new RiskType is introduced.
+BigDecimal is used for the calculations, because we're working with
+money and we would like the best precision.
+Lombok is used for it's convenient annotations and especially
+the Builder one - which is used for creating the fixture test data
+for the tests. Unit tests are available for both the controller and 
+the service.
